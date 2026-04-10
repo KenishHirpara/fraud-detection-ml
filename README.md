@@ -116,13 +116,12 @@ Cost = (FN \times 500) + (FP \times 10)
 ```
 fraud-detection-ml/
 │
-├── notebook.ipynb
-├── model.py
+├── Research.ipynb
+├── Research.py
 ├── README.md
 ├── roc_curve.png
 ├── pr_curve.png
 ├── requirements.txt
-└── sample_data.csv
 ```
 
 ---
