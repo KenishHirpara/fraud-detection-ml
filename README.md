@@ -14,7 +14,22 @@
 
 This project presents a **research-driven machine learning framework** for detecting fraudulent credit card transactions in highly imbalanced datasets.
 
-Traditional fraud detection systems rely heavily on accuracy, which becomes misleading in extreme imbalance scenarios. This work instead formulates fraud detection as an **Expected Risk Minimization problem**, ensuring that predictions are aligned with **real-world financial loss rather than statistical metrics alone**.
+Traditional fraud detection systems rely on accuracy, which becomes misleading in extreme imbalance scenarios. This work reframes fraud detection as an **Expected Risk Minimization problem**, aligning predictions with **real-world financial loss rather than statistical accuracy**.
+
+---
+
+## 📜 Research Paper
+
+📄 **Title:** Cost-Sensitive Credit Card Fraud Detection using Controlled SMOTE and Ensemble Learning
+
+👉 [View Full Paper](MiniNew.pdf)
+
+### 📌 Highlights
+
+* Expected Risk Minimization framework
+* Controlled SMOTE (0.2 ratio)
+* XGBoost achieves **49% cost reduction**
+* Real-world deployment considerations
 
 ---
 
@@ -24,7 +39,7 @@ Traditional fraud detection systems rely heavily on accuracy, which becomes misl
 * Domain-driven Feature Engineering (Temporal + Log Scaling)
 * Cost-Sensitive Learning with asymmetric penalties
 * Ensemble Learning: XGBoost, Random Forest, LightGBM
-* Robust evaluation using PR-AUC, ROC-AUC, F1-Score, and Financial Cost
+* Evaluation using PR-AUC, ROC-AUC, F1-Score, and Financial Cost
 
 ---
 
@@ -48,38 +63,38 @@ The dataset used is publicly available:
 
 ### 1. Feature Engineering
 
-* Extracted **Hour** from transaction time
-* Generated **Is_Night** indicator
-* Applied **log transformation** to normalize transaction amount
+* Extracted Hour from transaction time
+* Generated Is_Night indicator
+* Applied log transformation on transaction amount
 * Created relational feature interactions
 
 ---
 
 ### 2. Handling Class Imbalance
 
-* Implemented **Controlled SMOTE (0.2 ratio)**
-* Preserves minority structure while avoiding synthetic boundary overlap
+* Implemented Controlled SMOTE (0.2 ratio)
+* Prevents synthetic boundary overlap
 
 ---
 
 ### 3. Models Evaluated
 
-* XGBoost (**Best Performing**)
+* XGBoost (Best Performing Model)
 * Random Forest
 * LightGBM
 * Support Vector Machine
-* Isolation Forest (baseline anomaly detection)
+* Isolation Forest (baseline)
 
 ---
 
 ### 4. Cost-Sensitive Framework
 
-Financial loss function:
+Financial cost function:
 
 Cost = (FN × 500) + (FP × 10)
 
 * False Negative → Severe financial loss
-* False Positive → Minor operational cost
+* False Positive → Minor cost
 
 ---
 
@@ -88,7 +103,7 @@ Cost = (FN × 500) + (FP × 10)
 * Best Model: **XGBoost**
 * F1 Score: **0.857**
 * PR-AUC: **0.899**
-* Financial Cost Reduction: **~49% vs Random Forest**
+* Cost Reduction: **~49% vs Random Forest**
 
 ---
 
@@ -125,7 +140,7 @@ pip install -r requirements.txt
 python model.py
 ```
 
-⚠️ Replace `sample_data.csv` with the full dataset for actual results.
+⚠️ Replace sample dataset with full dataset for actual results.
 
 ---
 
@@ -136,8 +151,6 @@ To reproduce results:
 1. Download dataset from Kaggle
 2. Place dataset in project directory
 3. Run notebook or script
-
-All preprocessing, training, and evaluation steps are included.
 
 ---
 
@@ -154,8 +167,8 @@ All preprocessing, training, and evaluation steps are included.
 
 * Designed for banking fraud detection systems
 * Handles extreme class imbalance
-* Optimized for financial risk rather than accuracy
-* Suitable for real-time deployment pipelines
+* Optimized for financial risk
+* Suitable for real-time deployment
 
 ---
 
@@ -169,7 +182,7 @@ Fraud detection should be treated as an **asymmetric risk minimization problem**
 
 * PCA features reduce interpretability
 * Synthetic samples from SMOTE
-* Static model (no real-time concept drift handling)
+* Static model (no real-time drift handling)
 
 ---
 
@@ -178,19 +191,15 @@ Fraud detection should be treated as an **asymmetric risk minimization problem**
 * Deep learning models (LSTM, Transformers)
 * Real-time fraud detection pipelines
 * Concept drift adaptation
-* Adversarial robustness
-
----
-
-## 📜 Research Paper
-
-The full IEEE-style research paper is included in this repository.
+* Fairness and bias analysis
 
 ---
 
 ## 👨‍💻 Author
 
 **Kenish Hirpara**
+B.Tech Computer Science and Engineering
+Karnavati University
 
 ---
 
