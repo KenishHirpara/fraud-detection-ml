@@ -165,8 +165,7 @@ The full research paper is included in this repository.
 ## 👨‍💻 Author
 
 **Kenish Hirpara**
-B.Tech Computer Science and Engineering
-Karnavati University
+
 
 ---
 
