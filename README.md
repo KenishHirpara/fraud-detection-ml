@@ -1,6 +1,12 @@
 # 💳 Advanced Credit Card Fraud Detection
 
-### Controlled SMOTE • Cost-Sensitive Learning • Ensemble Models
+### 🚀 Cost-Sensitive Machine Learning Framework for Real-World Fraud Detection
+
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Machine Learning](https://img.shields.io/badge/ML-XGBoost-orange)
+![Status](https://img.shields.io/badge/Project-Research%20Level-brightgreen)
+![Dataset](https://img.shields.io/badge/Dataset-Kaggle-yellow)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
@@ -8,32 +14,33 @@
 
 This project presents a **research-driven machine learning framework** for detecting fraudulent credit card transactions in highly imbalanced datasets.
 
-Unlike traditional approaches that optimize accuracy, this work reframes fraud detection as an **Expected Risk Minimization problem**, where predictions are aligned with **real-world financial loss**.
+Unlike traditional approaches that optimize accuracy, this work reframes fraud detection as an **Expected Risk Minimization problem**, where predictions are aligned with **real-world financial loss rather than statistical correctness**.
 
 ---
 
 ## 🚀 Key Highlights
 
-* 🔹 Controlled SMOTE (0.2 ratio) to avoid overfitting
-* 🔹 Domain-driven Feature Engineering (Time + Log Scaling)
-* 🔹 Cost-Sensitive Learning with asymmetric penalties
-* 🔹 Ensemble Models: XGBoost, Random Forest, LightGBM
-* 🔹 Evaluation using PR-AUC, ROC-AUC, F1-Score, and Financial Cost
+* Controlled SMOTE (0.2 ratio) to avoid overfitting
+* Domain-driven Feature Engineering (Temporal + Log Scaling)
+* Cost-Sensitive Learning with asymmetric penalties
+* Ensemble Models: XGBoost, Random Forest, LightGBM
+* Evaluation using PR-AUC, ROC-AUC, F1-Score, and Financial Cost
 
 ---
 
 ## 📊 Dataset
 
-Kaggle Dataset:
-👉 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+The dataset used in this project is publicly available on Kaggle:
 
-### 📌 Details
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
+### 📌 Dataset Details
 
 * Total Transactions: **284,807**
 * Fraud Cases: **492 (~0.17%)**
-* Features: **V1–V28 (PCA), Time, Amount**
+* Features: **V1–V28 (PCA transformed), Time, Amount**
 
-⚠️ Dataset is not included due to size constraints.
+⚠️ Due to size constraints, the dataset is not included in this repository.
 
 ---
 
@@ -41,37 +48,48 @@ Kaggle Dataset:
 
 ### 1. Feature Engineering
 
-* Extracted temporal features (Hour, Is_Night)
-* Applied log transformation on transaction amount
-* Created relational features
+* Temporal extraction (Hour, Is_Night)
+* Log transformation of transaction amount
+* Relational feature creation
 
 ---
 
 ### 2. Handling Class Imbalance
 
-* Used **Controlled SMOTE (0.2)**
-* Prevents synthetic overfitting
+* Controlled SMOTE with sampling ratio 0.2
+* Prevents synthetic overfitting and boundary distortion
 
 ---
 
-### 3. Models Used
+### 3. Models Evaluated
 
-* XGBoost (Best Model)
+* XGBoost (Best Performing Model)
 * Random Forest
 * LightGBM
 * Support Vector Machine
-* Isolation Forest
+* Isolation Forest (Baseline)
 
 ---
 
 ### 4. Cost-Sensitive Evaluation
 
-[
-Cost = (FN \times 500) + (FP \times 10)
-]
+Financial cost function:
 
-* False Negative → High loss
-* False Positive → Low loss
+Cost = (FN × 500) + (FP × 10)
+
+* False Negative → Severe financial loss
+* False Positive → Minor inconvenience
+
+---
+
+## ⚡ Performance Summary
+
+* Best Model: XGBoost
+* F1 Score: 0.857
+* PR-AUC: 0.899
+* Cost Reduction: ~49%
+
+Optimized for **financial risk**, not just accuracy.
 
 ---
 
@@ -85,11 +103,6 @@ Cost = (FN \times 500) + (FP \times 10)
 | SVM              | 0.833     | 0.714     | 0.769     | 1010     |
 | Isolation Forest | 0.043     | 0.142     | 0.066     | 3220     |
 
-🏆 **Best Model: XGBoost**
-
-* Achieves optimal balance
-* Reduces financial cost by **~49%**
-
 ---
 
 ## 📉 Visualizations
@@ -98,7 +111,7 @@ Cost = (FN \times 500) + (FP \times 10)
 
 ![ROC Curve](roc_curve.png)
 
-### PR Curve
+### Precision-Recall Curve
 
 ![PR Curve](pr_curve.png)
 
@@ -106,59 +119,78 @@ Cost = (FN \times 500) + (FP \times 10)
 
 ## ▶️ How to Run
 
-```bash
-git clone https://github.com/KenishHirpara/fraud-detection-ml.git
-cd fraud-detection-ml
-pip install -r requirements.txt
-python model.py
-```
+1. Clone the repository:
+   git clone https://github.com/KenishHirpara/fraud-detection-ml.git
 
-⚠️ Replace `sample_data.csv` with full dataset for real results.
+2. Navigate into project folder:
+   cd fraud-detection-ml
+
+3. Install dependencies:
+   pip install -r requirements.txt
+
+4. Run the model:
+   python model.py
+
+⚠️ Replace sample dataset with full dataset for real results.
 
 ---
 
-## 📁 Project Structure
+## 🔁 Reproducibility
 
-```
-fraud-detection-ml/
-│
-├── notebook.ipynb
-├── model.py
-├── requirements.txt
-├── sample_data.csv
-├── README.md
-├── roc_curve.png
-└── pr_curve.png
-```
+This project is fully reproducible:
+
+* Download dataset from Kaggle
+* Place it in project directory
+* Run provided scripts or notebook
+
+All preprocessing, training, and evaluation steps are included.
+
+---
+
+## 🧪 Experimental Setup
+
+* Train/Test Split: 80/20 (Stratified)
+* SMOTE Ratio: 0.2
+* Evaluation Metrics: F1, PR-AUC, ROC-AUC
+* Cost Function: FN = 500, FP = 10
+
+---
+
+## 🌍 Real-World Relevance
+
+* Designed for financial fraud detection systems
+* Handles extreme class imbalance
+* Optimized for minimizing financial loss
+* Suitable for real-time deployment pipelines
 
 ---
 
 ## 🧠 Research Insight
 
-This project demonstrates that fraud detection should not be treated as a classification problem, but as an **asymmetric risk minimization problem**.
+Fraud detection should not be treated as a classification problem, but as an **asymmetric risk minimization problem**.
 
 ---
 
 ## ⚠️ Limitations
 
 * PCA features reduce interpretability
-* SMOTE introduces synthetic data
+* Synthetic data from SMOTE
 * Static model (no real-time drift handling)
 
 ---
 
 ## 🔮 Future Work
 
-* LSTM / Transformer-based models
+* Deep Learning (LSTM, Transformers)
 * Real-time fraud detection systems
 * Concept drift adaptation
 * Fairness and bias analysis
 
 ---
 
-## 📜 Paper
+## 📜 Research Paper
 
-The full research paper is included in this repository.
+The full IEEE-style research paper is included in this repository.
 
 ---
 
@@ -166,9 +198,8 @@ The full research paper is included in this repository.
 
 **Kenish Hirpara**
 
-
 ---
 
 ## ⭐ Support
 
-If you find this useful, give it a ⭐ on GitHub!
+If you find this project useful, consider giving it a ⭐ on GitHub!
