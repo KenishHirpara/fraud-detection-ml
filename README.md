@@ -1,17 +1,21 @@
 # 💳 Advanced Credit Card Fraud Detection
 
-## 📌 Overview
-
-This project presents a **cost-sensitive machine learning framework** for detecting fraudulent credit card transactions in highly imbalanced datasets.
-
-Unlike traditional approaches that optimize accuracy, this work reframes fraud detection as an **Expected Risk Minimization problem**, where predictions are aligned with **real-world financial impact**.
+### Controlled SMOTE • Cost-Sensitive Learning • Ensemble Models
 
 ---
 
-## 🚀 Key Features
+## 📌 Overview
 
-* 🔹 Controlled SMOTE (0.2 ratio) to handle extreme class imbalance
-* 🔹 Domain-driven Feature Engineering (Temporal + Log Scaling)
+This project presents a **research-driven machine learning framework** for detecting fraudulent credit card transactions in highly imbalanced datasets.
+
+Unlike traditional approaches that optimize accuracy, this work reframes fraud detection as an **Expected Risk Minimization problem**, where predictions are aligned with **real-world financial loss**.
+
+---
+
+## 🚀 Key Highlights
+
+* 🔹 Controlled SMOTE (0.2 ratio) to avoid overfitting
+* 🔹 Domain-driven Feature Engineering (Time + Log Scaling)
 * 🔹 Cost-Sensitive Learning with asymmetric penalties
 * 🔹 Ensemble Models: XGBoost, Random Forest, LightGBM
 * 🔹 Evaluation using PR-AUC, ROC-AUC, F1-Score, and Financial Cost
@@ -20,17 +24,16 @@ Unlike traditional approaches that optimize accuracy, this work reframes fraud d
 
 ## 📊 Dataset
 
-The dataset used in this project is publicly available on Kaggle:
-
+Kaggle Dataset:
 👉 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
-### 📌 Dataset Details
+### 📌 Details
 
 * Total Transactions: **284,807**
 * Fraud Cases: **492 (~0.17%)**
-* Features: **V1–V28 (PCA transformed) + Time + Amount**
+* Features: **V1–V28 (PCA), Time, Amount**
 
-⚠️ Due to size constraints, the dataset is **not included** in this repository.
+⚠️ Dataset is not included due to size constraints.
 
 ---
 
@@ -38,39 +41,37 @@ The dataset used in this project is publicly available on Kaggle:
 
 ### 1. Feature Engineering
 
-* Extracted **temporal features** (Hour, Is_Night)
-* Applied **log transformation** on transaction amount
-* Created **relational features** between PCA components
+* Extracted temporal features (Hour, Is_Night)
+* Applied log transformation on transaction amount
+* Created relational features
 
 ---
 
 ### 2. Handling Class Imbalance
 
-* Used **Controlled SMOTE (ratio = 0.2)**
-* Prevents overfitting caused by full oversampling
+* Used **Controlled SMOTE (0.2)**
+* Prevents synthetic overfitting
 
 ---
 
 ### 3. Models Used
 
+* XGBoost (Best Model)
 * Random Forest
-* XGBoost (Best Performing)
 * LightGBM
-* Support Vector Machine (SVM)
-* Isolation Forest (Baseline)
+* Support Vector Machine
+* Isolation Forest
 
 ---
 
 ### 4. Cost-Sensitive Evaluation
 
-Instead of accuracy, we minimize financial loss:
-
 [
 Cost = (FN \times 500) + (FP \times 10)
 ]
 
-* False Negative → High loss (missed fraud)
-* False Positive → Low loss (customer inconvenience)
+* False Negative → High loss
+* False Positive → Low loss
 
 ---
 
@@ -84,30 +85,35 @@ Cost = (FN \times 500) + (FP \times 10)
 | SVM              | 0.833     | 0.714     | 0.769     | 1010     |
 | Isolation Forest | 0.043     | 0.142     | 0.066     | 3220     |
 
-### 🏆 Best Model: XGBoost
+🏆 **Best Model: XGBoost**
 
-* Achieves optimal balance between Precision and Recall
-* Reduces financial cost by **~49% compared to Random Forest**
+* Achieves optimal balance
+* Reduces financial cost by **~49%**
 
 ---
 
 ## 📉 Visualizations
 
-* ROC Curve
-* Precision-Recall Curve
-* Confusion Matrix
-* Feature Importance Plot
+### ROC Curve
+
+![ROC Curve](roc_curve.png)
+
+### PR Curve
+
+![PR Curve](pr_curve.png)
 
 ---
 
-## ⚙️ Technologies Used
+## ▶️ How to Run
 
-* Python
-* Scikit-learn
-* XGBoost
-* LightGBM
-* Pandas, NumPy
-* Matplotlib, Seaborn
+```bash
+git clone https://github.com/KenishHirpara/fraud-detection-ml.git
+cd fraud-detection-ml
+pip install -r requirements.txt
+python model.py
+```
+
+⚠️ Replace `sample_data.csv` with full dataset for real results.
 
 ---
 
@@ -116,36 +122,43 @@ Cost = (FN \times 500) + (FP \times 10)
 ```
 fraud-detection-ml/
 │
-├── Research.ipynb
-├── Research.py
+├── notebook.ipynb
+├── model.py
+├── requirements.txt
+├── sample_data.csv
 ├── README.md
 ├── roc_curve.png
-├── pr_curve.png
-├── requirements.txt
+└── pr_curve.png
 ```
 
 ---
 
-## 🔬 Key Insight
+## 🧠 Research Insight
 
-> Fraud detection should not be treated as a classification problem, but as an **asymmetric risk minimization problem**.
+This project demonstrates that fraud detection should not be treated as a classification problem, but as an **asymmetric risk minimization problem**.
 
 ---
 
 ## ⚠️ Limitations
 
-* Dataset is anonymized (PCA), limiting interpretability
-* SMOTE generates synthetic samples
-* Model does not handle real-time concept drift
+* PCA features reduce interpretability
+* SMOTE introduces synthetic data
+* Static model (no real-time drift handling)
 
 ---
 
 ## 🔮 Future Work
 
-* Deep Learning (LSTM, Transformers)
+* LSTM / Transformer-based models
 * Real-time fraud detection systems
 * Concept drift adaptation
 * Fairness and bias analysis
+
+---
+
+## 📜 Paper
+
+The full research paper is included in this repository.
 
 ---
 
@@ -157,8 +170,6 @@ Karnavati University
 
 ---
 
-## ⭐ If you like this project
+## ⭐ Support
 
-Give it a ⭐ on GitHub!
-
----
+If you find this useful, give it a ⭐ on GitHub!
