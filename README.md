@@ -198,8 +198,6 @@ Fraud detection should be treated as an **asymmetric risk minimization problem**
 ## 👨‍💻 Author
 
 **Kenish Hirpara**
-B.Tech Computer Science and Engineering
-Karnavati University
 
 ---
 
