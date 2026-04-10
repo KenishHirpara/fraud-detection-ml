@@ -22,7 +22,7 @@ Traditional fraud detection systems rely on accuracy, which becomes misleading i
 
 📄 **Title:** Cost-Sensitive Credit Card Fraud Detection using Controlled SMOTE and Ensemble Learning
 
-👉 [View Full Paper](Reseach Paper.pdf)
+👉 [View Full Paper](Research%20Paper.pdf)
 
 ### 📌 Highlights
 
