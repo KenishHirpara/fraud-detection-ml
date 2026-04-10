@@ -14,33 +14,33 @@
 
 This project presents a **research-driven machine learning framework** for detecting fraudulent credit card transactions in highly imbalanced datasets.
 
-Unlike traditional approaches that optimize accuracy, this work reframes fraud detection as an **Expected Risk Minimization problem**, where predictions are aligned with **real-world financial loss rather than statistical correctness**.
+Traditional fraud detection systems rely heavily on accuracy, which becomes misleading in extreme imbalance scenarios. This work instead formulates fraud detection as an **Expected Risk Minimization problem**, ensuring that predictions are aligned with **real-world financial loss rather than statistical metrics alone**.
 
 ---
 
 ## 🚀 Key Highlights
 
-* Controlled SMOTE (0.2 ratio) to avoid overfitting
+* Controlled SMOTE (0.2 ratio) to prevent overfitting
 * Domain-driven Feature Engineering (Temporal + Log Scaling)
 * Cost-Sensitive Learning with asymmetric penalties
-* Ensemble Models: XGBoost, Random Forest, LightGBM
-* Evaluation using PR-AUC, ROC-AUC, F1-Score, and Financial Cost
+* Ensemble Learning: XGBoost, Random Forest, LightGBM
+* Robust evaluation using PR-AUC, ROC-AUC, F1-Score, and Financial Cost
 
 ---
 
 ## 📊 Dataset
 
-The dataset used in this project is publicly available on Kaggle:
+The dataset used is publicly available:
 
-https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+👉 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
 ### 📌 Dataset Details
 
 * Total Transactions: **284,807**
 * Fraud Cases: **492 (~0.17%)**
-* Features: **V1–V28 (PCA transformed), Time, Amount**
+* Features: **V1–V28 (PCA), Time, Amount**
 
-⚠️ Due to size constraints, the dataset is not included in this repository.
+⚠️ Dataset is not included due to size and licensing constraints.
 
 ---
 
@@ -48,48 +48,47 @@ https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
 ### 1. Feature Engineering
 
-* Temporal extraction (Hour, Is_Night)
-* Log transformation of transaction amount
-* Relational feature creation
+* Extracted **Hour** from transaction time
+* Generated **Is_Night** indicator
+* Applied **log transformation** to normalize transaction amount
+* Created relational feature interactions
 
 ---
 
 ### 2. Handling Class Imbalance
 
-* Controlled SMOTE with sampling ratio 0.2
-* Prevents synthetic overfitting and boundary distortion
+* Implemented **Controlled SMOTE (0.2 ratio)**
+* Preserves minority structure while avoiding synthetic boundary overlap
 
 ---
 
 ### 3. Models Evaluated
 
-* XGBoost (Best Performing Model)
+* XGBoost (**Best Performing**)
 * Random Forest
 * LightGBM
 * Support Vector Machine
-* Isolation Forest (Baseline)
+* Isolation Forest (baseline anomaly detection)
 
 ---
 
-### 4. Cost-Sensitive Evaluation
+### 4. Cost-Sensitive Framework
 
-Financial cost function:
+Financial loss function:
 
 Cost = (FN × 500) + (FP × 10)
 
 * False Negative → Severe financial loss
-* False Positive → Minor inconvenience
+* False Positive → Minor operational cost
 
 ---
 
 ## ⚡ Performance Summary
 
-* Best Model: XGBoost
-* F1 Score: 0.857
-* PR-AUC: 0.899
-* Cost Reduction: ~49%
-
-Optimized for **financial risk**, not just accuracy.
+* Best Model: **XGBoost**
+* F1 Score: **0.857**
+* PR-AUC: **0.899**
+* Financial Cost Reduction: **~49% vs Random Forest**
 
 ---
 
@@ -119,29 +118,24 @@ Optimized for **financial risk**, not just accuracy.
 
 ## ▶️ How to Run
 
-1. Clone the repository:
-   git clone https://github.com/KenishHirpara/fraud-detection-ml.git
+```bash
+git clone https://github.com/KenishHirpara/fraud-detection-ml.git
+cd fraud-detection-ml
+pip install -r requirements.txt
+python model.py
+```
 
-2. Navigate into project folder:
-   cd fraud-detection-ml
-
-3. Install dependencies:
-   pip install -r requirements.txt
-
-4. Run the model:
-   python model.py
-
-⚠️ Replace sample dataset with full dataset for real results.
+⚠️ Replace `sample_data.csv` with the full dataset for actual results.
 
 ---
 
 ## 🔁 Reproducibility
 
-This project is fully reproducible:
+To reproduce results:
 
-* Download dataset from Kaggle
-* Place it in project directory
-* Run provided scripts or notebook
+1. Download dataset from Kaggle
+2. Place dataset in project directory
+3. Run notebook or script
 
 All preprocessing, training, and evaluation steps are included.
 
@@ -158,33 +152,33 @@ All preprocessing, training, and evaluation steps are included.
 
 ## 🌍 Real-World Relevance
 
-* Designed for financial fraud detection systems
+* Designed for banking fraud detection systems
 * Handles extreme class imbalance
-* Optimized for minimizing financial loss
+* Optimized for financial risk rather than accuracy
 * Suitable for real-time deployment pipelines
 
 ---
 
 ## 🧠 Research Insight
 
-Fraud detection should not be treated as a classification problem, but as an **asymmetric risk minimization problem**.
+Fraud detection should be treated as an **asymmetric risk minimization problem**, not a traditional classification task.
 
 ---
 
 ## ⚠️ Limitations
 
 * PCA features reduce interpretability
-* Synthetic data from SMOTE
-* Static model (no real-time drift handling)
+* Synthetic samples from SMOTE
+* Static model (no real-time concept drift handling)
 
 ---
 
 ## 🔮 Future Work
 
-* Deep Learning (LSTM, Transformers)
-* Real-time fraud detection systems
+* Deep learning models (LSTM, Transformers)
+* Real-time fraud detection pipelines
 * Concept drift adaptation
-* Fairness and bias analysis
+* Adversarial robustness
 
 ---
 
@@ -202,4 +196,4 @@ The full IEEE-style research paper is included in this repository.
 
 ## ⭐ Support
 
-If you find this project useful, consider giving it a ⭐ on GitHub!
+If you found this project useful, consider giving it a ⭐ on GitHub!
